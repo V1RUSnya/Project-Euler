@@ -17,4 +17,6 @@ while True:
             memorycount += 1
         else:
             break
+memory += 2
+memorycount += 1 #Так как первые 2 числа задали заранее
 print(f"\nСумма всех чисел: {memory}\nВсего четных чисел: {memorycount}\n")
