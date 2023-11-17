@@ -11,16 +11,28 @@ def test():
     print(f"{memory} - наибольший делитель") #Пример
 
 @njit
-def main():
-    count = 1
+def main(Number):
+    count = 2
     while True:
-        Number = 600851475143 % count
-        if Number == 0:
+        WorkNumber = Number % count
+        if count == (Number-1):
+            return Number
+        if WorkNumber == 0:
             Memory = count
-        print(f"{Memory} - Последний наибольший делитель!\t\t{count}")
-        count += 1
-        if count == 600851475142:
             break
-    print(f"{Memory} - наибольший делитель (Кроме самого числа)")
+        print(WorkNumber, "\t",count)
+        count += 1
+        
+    print(f"{Memory} - найден делитель")
+    return Number/Memory
 
-main()
+
+memory = main(600851475143)
+backupMemory = 0
+while True:
+    memory = main(memory)
+    if backupMemory == memory:
+        print(f"Правильный ответ: {memory}")
+        break
+    else:
+        backupMemory = memory
