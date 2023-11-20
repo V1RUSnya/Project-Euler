@@ -9,10 +9,10 @@ while True:
         if i != 0:
             if num%i == 0:
                 count += 1
-                if count > 3:
+                if count >= 3:
                      break
     if count == 2:
-            print(f"Найдено число {num}")
+            print(f"Найдено число {num}! Осталось найти {10001-numbersCount}")
             numbersCount +=1                
     if numbersCount == 10001:
         break            
