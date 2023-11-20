@@ -5,7 +5,7 @@ numbersCount = 0
 while True:
     num +=1
     count = 0
-    for i in range (num):
+    for i in range (int(num**0.5+1)):
         if i != 0:
             if num%i == 0:
                 count += 1
