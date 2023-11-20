@@ -5,15 +5,15 @@ numbersCount = 0
 while True:
     num +=1
     count = 0
-    for i in range (num+1):
+    for i in range (num):
         if i != 0:
             if num%i == 0:
                 count += 1
-                if count >= 3:
+                if count >= 2:
                      break
-    if count == 2:
+    if count == 1:
             print(f"Найдено число {num}! Осталось найти {10001-numbersCount}")
             numbersCount +=1                
-    if numbersCount == 10001:
+    if numbersCount == 10000:
         break            
 print(f"10001 число: {num}")
