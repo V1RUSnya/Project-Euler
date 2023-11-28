@@ -21,7 +21,6 @@
 # 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
 # Произведение этих чисел 26 × 63 × 78 × 14 = 1788696.
 # Каково наибольшее произведение четырех подряд идущих чисел в таблице 20×20, расположенных в любом направлении (вверх, вниз, вправо, влево или по диагонали)?
-
 matrix = [
     [8,2,22,97,38,15,00,40,00,75,4,5,7,78,52,12,50,77,91,8],
     [49,49,99,40,17,81,18,57,60,87,17,40,98,43,69,48,4,56,62,00],
@@ -47,41 +46,28 @@ matrix = [
 def horizontal(matrix,a,colom):
     a,b,c,d = matrix[colom][a],matrix[colom][a+1],matrix[colom][a+2],matrix[colom][a+3]
     return a*b*c*d
-
 def vertical(matrix,a,row):
     a,b,c,d = matrix[a][row],matrix[a+1][row],matrix[a+2][row],matrix[a+3][row]
     return a*b*c*d
-
 def rightdiagonal(matrix,hor,ver):
     a,b,c,d = matrix[ver][hor+3],matrix[ver+1][hor+2],matrix[ver+2][hor+1],matrix[ver+3][hor]
     return a*b*c*d
-
 def leftdiagonal(matrix,hor,ver):
     a,b,c,d = matrix[ver][hor],matrix[ver+1][hor+1],matrix[ver+2][hor+2],matrix[ver+3][hor+3]
     return a*b*c*d
-
+def work1(old,new):
+    if new>old:
+        print(new)
+        return new
+    else:
+        return old
+    
 memory = 0
 for i in range (0,20):
     for o in range (0,20-4):
-        temp = horizontal(matrix,o,i)
-        if memory < temp:
-            print(temp)
-            memory = temp
-for i in range (0,20):
-    for o in range (0,20-4):
-        temp = vertical(matrix,o,i)
-        if memory < temp:
-            print(temp)
-            memory = temp
+        memory = work1(memory,horizontal(matrix,o,i))
+        memory = work1(memory,vertical(matrix,o,i))
 for hor in range (0,20-4):
     for ver in range (0,20-4):
-        temp = rightdiagonal(matrix,hor,ver)
-        if memory < temp:
-            print(temp)
-            memory = temp
-for hor in range (0,20-4):
-    for ver in range (0,20-4):
-        temp = leftdiagonal(matrix,hor,ver)
-        if memory < temp:
-            print(temp)
-            memory = temp
+        memory = work1(memory,rightdiagonal(matrix,hor,ver))
+        memory = work1(memory,leftdiagonal(matrix,hor,ver))
