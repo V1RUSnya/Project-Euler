@@ -52,8 +52,13 @@ def vertical(matrix,a,row):
     a,b,c,d = matrix[a][row],matrix[a+1][row],matrix[a+2][row],matrix[a+3][row]
     return a*b*c*d
 
-def diagonalEptaSukaBlyat(matrix,a,diag):
-    
+def rightdiagonal(matrix,hor,ver):
+    a,b,c,d = matrix[ver][hor+3],matrix[ver+1][hor+2],matrix[ver+2][hor+1],matrix[ver+3][hor]
+    return a*b*c*d
+
+def leftdiagonal(matrix,hor,ver):
+    a,b,c,d = matrix[ver][hor],matrix[ver+1][hor+1],matrix[ver+2][hor+2],matrix[ver+3][hor+3]
+    return a*b*c*d
 
 memory = 0
 for i in range (0,20):
@@ -65,6 +70,18 @@ for i in range (0,20):
 for i in range (0,20):
     for o in range (0,20-4):
         temp = vertical(matrix,o,i)
+        if memory < temp:
+            print(temp)
+            memory = temp
+for hor in range (0,20-4):
+    for ver in range (0,20-4):
+        temp = rightdiagonal(matrix,hor,ver)
+        if memory < temp:
+            print(temp)
+            memory = temp
+for hor in range (0,20-4):
+    for ver in range (0,20-4):
+        temp = leftdiagonal(matrix,hor,ver)
         if memory < temp:
             print(temp)
             memory = temp
