@@ -105,6 +105,7 @@ memory,temp = 0,""
 
 memory= int(massiv[0])
 for i in range (1,len(massiv)):
-    memory = memory + int(massiv[i])
+    var = int(massiv[i])
+    memory = var + memory
 memory = str(memory)
 print(f"Ответ: {memory[:10]}")
