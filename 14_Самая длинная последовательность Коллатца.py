@@ -10,13 +10,20 @@
 # Какой начальный элемент меньше миллиона генерирует самую длинную последовательность?
 # Примечание: Следующие за первым элементы последовательности могут быть больше миллиона.
 
-lst = []
-n = 13
-lst.append(13)
-while n > 1:
-    if n % 2 == 0:
-        n = n/2
-    else:
-        n = 3*n+1
-    lst.append(int(n))
-print(lst)
+def sol(n):
+    lst = []
+    lst.append(n)
+    while n > 1:
+        if n % 2 == 0:
+            n = n/2
+        else:
+            n = 3*n+1
+        lst.append(int(n))
+    return len(lst)
+
+memory = 0
+for i in range (1,10**6):
+    work = sol(i)
+    if work > memory:
+        memory = work
+        print(f"Последовательность из {memory}! Число {i}")
